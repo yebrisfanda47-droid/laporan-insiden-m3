@@ -1,1 +1,416 @@
-# laporan-insiden-m3
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Laporan Insiden/Kecelakaan Kerja - PT Miracle Multi Mandiri</title>
+    <style>
+        @page {
+            size: A4 portrait;
+            margin: 0; /* Menghilangkan URL, Judul, Tanggal bawaan browser */
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+            background-color: #eaeff2;
+        }
+
+        /* Tombol Cetak */
+        .print-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px auto;
+            padding: 12px 24px;
+            background-color: #1e3c72;
+            color: white;
+            font-size: 16px;
+            font-weight: bold;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            transition: background-color 0.3s ease;
+        }
+        .print-btn:hover {
+            background-color: #2a5298;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 210mm;
+            margin: 0 auto;
+            background: #fff;
+            padding: 30px;
+            box-sizing: border-box;
+            border-radius: 8px;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+        }
+        
+        /* Header Styling */
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            color: #ffffff;
+            padding: 15px 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+        }
+        .header h1 {
+            margin: 0;
+            font-size: 20px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .header .company {
+            font-size: 14px;
+            font-weight: 600;
+            color: #e0f7fa;
+            text-align: right;
+        }
+
+        /* Doc Control */
+        .doc-control {
+            display: flex;
+            justify-content: flex-end;
+            margin-top: 15px;
+            margin-bottom: 20px;
+            font-size: 12px;
+        }
+        .doc-control table {
+            border-collapse: collapse;
+        }
+        .doc-control td {
+            padding: 4px 8px;
+            vertical-align: middle;
+        }
+        .doc-control td:first-child {
+            font-weight: bold;
+            color: #555;
+        }
+        .doc-input {
+            width: 130px;
+            padding: 4px 8px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-family: inherit;
+        }
+
+        /* Section Styling */
+        .section-title {
+            background-color: #f0f4f8;
+            color: #1e3c72;
+            padding: 8px 15px;
+            font-size: 14px;
+            font-weight: bold;
+            text-transform: uppercase;
+            margin-top: 20px;
+            margin-bottom: 10px;
+            border-radius: 4px;
+            border-left: 5px solid #2a5298;
+        }
+
+        /* Table Layout for Form Fields */
+        table.form-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 12px;
+        }
+        table.form-table th, table.form-table td {
+            border: 1px solid #e0e0e0;
+            padding: 8px 10px;
+            vertical-align: middle;
+        }
+        table.form-table th {
+            background-color: #fafafa;
+            width: 30%;
+            text-align: left;
+            font-weight: 600;
+            color: #444;
+        }
+
+        /* Inputs & Textareas */
+        input[type="text"], input[type="date"], input[type="time"], input[type="number"], textarea {
+            width: 100%;
+            padding: 6px 8px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-family: inherit;
+            font-size: 12px;
+            box-sizing: border-box;
+            background-color: #fdfdfd;
+            transition: all 0.3s ease;
+        }
+        input[type="text"]:focus, input[type="date"]:focus, input[type="time"]:focus, textarea:focus {
+            border-color: #2a5298;
+            outline: none;
+            background-color: #fff;
+            box-shadow: 0 0 5px rgba(42, 82, 152, 0.2);
+        }
+        textarea {
+            resize: vertical;
+            min-height: 50px;
+        }
+
+        /* Split Columns inside tables */
+        .split-row {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+        .split-col {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .split-col span {
+            min-width: 90px;
+        }
+
+        /* Checkbox & Radio Styling */
+        .radio-group, .checkbox-group {
+            display: flex;
+            gap: 15px;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        .checkbox-group.grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 8px;
+        }
+        .checkbox-item, .radio-item {
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+            color: #333;
+        }
+        .checkbox-item input, .radio-item input {
+            margin-right: 8px;
+            cursor: pointer;
+            width: 14px;
+            height: 14px;
+        }
+
+        /* Footer / Signatures */
+        .footer-note {
+            font-size: 11px;
+            font-style: italic;
+            color: #d32f2f;
+            background-color: #ffebee;
+            padding: 10px 15px;
+            border-left: 4px solid #d32f2f;
+            border-radius: 4px;
+            margin-top: 20px;
+        }
+        .signatures {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 30px;
+            padding: 0 10px;
+        }
+        .signature-box {
+            text-align: center;
+            width: 200px;
+        }
+        .signature-box p {
+            margin-bottom: 60px;
+            font-weight: 600;
+            color: #444;
+            font-size: 13px;
+        }
+        .signature-input {
+            width: 100%;
+            border: none;
+            border-bottom: 1px solid #333;
+            text-align: center;
+            font-size: 13px;
+            font-weight: bold;
+            padding-bottom: 5px;
+            background: transparent;
+            outline: none;
+        }
+
+        /* Print Adjustments */
+        @media print {
+            body { 
+                background: #fff; 
+                padding: 15mm; 
+                box-sizing: border-box;
+            }
+            .print-btn {
+                display: none !important;
+            }
+            .container { 
+                border: none; 
+                box-shadow: none; 
+                padding: 0; 
+                max-width: 100%;
+            }
+            .header {
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+                border-radius: 0;
+            }
+            input[type="text"], input[type="date"], input[type="time"], input[type="number"], .doc-input {
+                border: none;
+                border-bottom: 1px dotted #777;
+                background: transparent;
+                border-radius: 0;
+                padding: 4px 0;
+            }
+            textarea { 
+                border: 1px solid #ccc; 
+                background: transparent;
+            }
+            .section-title {
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+            .footer-note {
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+                border: 1px solid #d32f2f;
+            }
+            .signature-input {
+                border-bottom: 1px solid #000;
+            }
+
+            /* --- KODE TAMBAHAN UNTUK MENCEGAH TERPOTONG --- */
+            tr, .section-title, .footer-note, .signatures, .signature-box {
+                page-break-inside: avoid;
+                break-inside: avoid;
+            }
+            /* ------------------------------------------------ */
+        }
+    </style>
+</head>
+<body>
+
+<button class="print-btn" onclick="window.print()">🖨️ Cetak / Unduh PDF</button>
+
+<div class="container">
+    <div class="header">
+        <h1>Laporan Insiden/ Kecelakaan</h1>
+        <div class="company">PT Miracle Multi Mandiri</div>
+    </div>
+
+    <div class="doc-control">
+        <table>
+            <tr><td>No. Formulir</td><td>:</td><td><input type="text" class="doc-input"></td></tr>
+            <tr><td>No. Revisi</td><td>:</td><td><input type="text" class="doc-input"></td></tr>
+            <tr><td>Tanggal</td><td>:</td><td><input type="date" class="doc-input"></td></tr>
+        </table>
+    </div>
+
+    <div class="section-title">Informasi Tenaga Kerja</div>
+    <table class="form-table">
+        <tr><th>Nama Lengkap</th><td><input type="text" placeholder="Masukkan nama lengkap"></td></tr>
+        <tr><th>Alamat Tempat Tinggal</th><td><input type="text" placeholder="Masukkan alamat domisili"></td></tr>
+        <tr>
+            <th>Jenis Kelamin</th>
+            <td>
+                <div class="radio-group">
+                    <label class="radio-item"><input type="radio" name="jk" value="L"> Laki-laki</label>
+                    <label class="radio-item"><input type="radio" name="jk" value="P"> Perempuan</label>
+                </div>
+            </td>
+        </tr>
+        <tr><th>Umur</th><td><input type="number" placeholder="Contoh: 28" style="width: 100px;"> Tahun</td></tr>
+        <tr><th>Nomor Induk / NIK</th><td><input type="text" placeholder="Masukkan nomor induk karyawan"></td></tr>
+        <tr><th>Bagian / Departemen</th><td><input type="text" placeholder="Contoh: Produksi / Gudang"></td></tr>
+        <tr><th>Jabatan</th><td><input type="text" placeholder="Masukkan jabatan saat ini"></td></tr>
+        <tr><th>No. Telepon / HP</th><td><input type="text" placeholder="Masukkan nomor telepon aktif"></td></tr>
+    </table>
+
+    <div class="section-title">Deskripsi Cedera / Insiden</div>
+    <table class="form-table">
+        <tr>
+            <th>Hari / Tanggal</th>
+            <td><input type="date" style="width: 150px;"></td>
+        </tr>
+        <tr>
+            <th>Waktu (Pukul)</th>
+            <td><input type="time" style="width: 100px;"> WIB/WITA/WIT</td>
+        </tr>
+        <tr>
+            <th>Nama Pelapor Insiden</th>
+            <td>
+                <div class="split-row">
+                    <div class="split-col"><span>Nama:</span> <input type="text"></div>
+                    <div class="split-col"><span>Jabatan/HP:</span> <input type="text"></div>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <th>Saksi Langsung</th>
+            <td>
+                <div class="split-row">
+                    <div class="split-col"><span>Nama:</span> <input type="text"></div>
+                    <div class="split-col"><span>Jabatan/HP:</span> <input type="text"></div>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <th>Kategori Insiden</th>
+            <td>
+                <div class="checkbox-group grid">
+                    <label class="checkbox-item"><input type="checkbox"> Near Miss / Situasi Berbahaya</label>
+                    <label class="checkbox-item"><input type="checkbox"> Lost Time (Absen dari pekerjaan)</label>
+                    <label class="checkbox-item"><input type="checkbox"> First Aid (Butuh P3K segera)</label>
+                    <label class="checkbox-item"><input type="checkbox"> Health Care (Tindakan medis lanjut)</label>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <th>Pengobatan & Cedera</th>
+            <td>
+                <div class="checkbox-group" style="margin-bottom: 10px;">
+                    <label class="checkbox-item"><input type="checkbox"> Tidak Ada</label>
+                    <label class="checkbox-item"><input type="checkbox"> P3K Internal</label>
+                    <label class="checkbox-item"><input type="checkbox"> Klinik Perusahaan</label>
+                    <label class="checkbox-item"><input type="checkbox"> Rumah Sakit</label>
+                </div>
+                <div style="margin-top: 10px;">
+                    <strong style="display:block; margin-bottom: 5px; color: #444;">Deskripsi Cedera:</strong>
+                    <textarea placeholder="Jelaskan secara singkat bagian tubuh yang terluka..."></textarea>
+                </div>
+                <div style="margin-top: 10px;">
+                    <strong style="display:block; margin-bottom: 5px; color: #444;">Pertolongan Pertama:</strong>
+                    <textarea placeholder="Jelaskan tindakan awal yang sudah dilakukan..."></textarea>
+                </div>
+            </td>
+        </tr>
+    </table>
+
+    <div class="section-title">Analisis & Perbaikan</div>
+    <table class="form-table">
+        <tr><th>Kronologi Kejadian</th><td><textarea placeholder="Ceritakan bagaimana insiden ini bisa terjadi..."></textarea></td></tr>
+        <tr><th>Penyebab Insiden</th><td><textarea placeholder="Sebutkan faktor penyebab utama maupun pendukung..."></textarea></td></tr>
+        <tr><th>Akibat Insiden</th><td><textarea placeholder="Jelaskan kerugian yang timbul (cedera, alat rusak)..."></textarea></td></tr>
+        <tr><th>Langkah Perbaikan</th><td><textarea placeholder="Langkah apa yang diambil agar tidak terulang..."></textarea></td></tr>
+    </table>
+
+    <div class="footer-note">
+        <strong>PENTING:</strong> Supervisor wajib melaporkan secara tertulis kepada Dept. K3 (HSE) maksimal 1x24 jam sejak insiden.
+    </div>
+
+    <div class="signatures">
+        <div class="signature-box">
+            <p>Dilaporkan Oleh,<br></p>
+            <input type="text" class="signature-input" placeholder="(Nama Terang)">
+        </div>
+        <div class="signature-box">
+            <p>Mengetahui,<br></p>
+			<input type="text" class="signature-input" placeholder="(Nama & Jabatan)">
+        </div>
+    </div>
+
+</div>
+
+</body>
+</html>
