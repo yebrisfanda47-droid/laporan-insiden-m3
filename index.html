@@ -6,7 +6,7 @@
     <title>Laporan Insiden/Kecelakaan Kerja - PT Miracle Multi Mandiri</title>
     <style>
         @page {
-            size: A4 portrait;
+            size: A4 landscape;
             margin: 0; /* Menghilangkan URL, Judul, Tanggal bawaan browser */
         }
         body {
@@ -40,7 +40,7 @@
 
         .container {
             width: 100%;
-            max-width: 210mm;
+            max-width: 297mm;
             margin: 0 auto;
             background: #fff;
             padding: 30px;
@@ -56,18 +56,18 @@
             align-items: center;
             background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
             color: #ffffff;
-            padding: 15px 20px;
+            padding: 20px 25px;
             border-radius: 8px;
             box-shadow: 0 4px 6px rgba(0,0,0,0.05);
         }
         .header h1 {
             margin: 0;
-            font-size: 20px;
+            font-size: 24px;
             text-transform: uppercase;
-            letter-spacing: 1px;
+            letter-spacing: 1.5px;
         }
         .header .company {
-            font-size: 14px;
+            font-size: 16px;
             font-weight: 600;
             color: #e0f7fa;
             text-align: right;
@@ -78,8 +78,8 @@
             display: flex;
             justify-content: flex-end;
             margin-top: 15px;
-            margin-bottom: 20px;
-            font-size: 12px;
+            margin-bottom: 25px;
+            font-size: 13px;
         }
         .doc-control table {
             border-collapse: collapse;
@@ -93,7 +93,7 @@
             color: #555;
         }
         .doc-input {
-            width: 130px;
+            width: 150px;
             padding: 4px 8px;
             border: 1px solid #ccc;
             border-radius: 4px;
@@ -104,11 +104,11 @@
         .section-title {
             background-color: #f0f4f8;
             color: #1e3c72;
-            padding: 8px 15px;
-            font-size: 14px;
+            padding: 10px 15px;
+            font-size: 15px;
             font-weight: bold;
             text-transform: uppercase;
-            margin-top: 20px;
+            margin-top: 25px;
             margin-bottom: 10px;
             border-radius: 4px;
             border-left: 5px solid #2a5298;
@@ -118,16 +118,16 @@
         table.form-table {
             width: 100%;
             border-collapse: collapse;
-            font-size: 12px;
+            font-size: 13px;
         }
         table.form-table th, table.form-table td {
             border: 1px solid #e0e0e0;
-            padding: 8px 10px;
+            padding: 10px 12px;
             vertical-align: middle;
         }
         table.form-table th {
             background-color: #fafafa;
-            width: 30%;
+            width: 25%;
             text-align: left;
             font-weight: 600;
             color: #444;
@@ -136,11 +136,11 @@
         /* Inputs & Textareas */
         input[type="text"], input[type="date"], input[type="time"], input[type="number"], textarea {
             width: 100%;
-            padding: 6px 8px;
+            padding: 8px 10px;
             border: 1px solid #ccc;
             border-radius: 4px;
             font-family: inherit;
-            font-size: 12px;
+            font-size: 13px;
             box-sizing: border-box;
             background-color: #fdfdfd;
             transition: all 0.3s ease;
@@ -153,35 +153,40 @@
         }
         textarea {
             resize: vertical;
-            min-height: 50px;
+            min-height: 60px;
+        }
+        .input-group {
+            display: flex;
+            align-items: center;
+            gap: 10px;
         }
 
         /* Split Columns inside tables */
         .split-row {
             display: flex;
-            flex-direction: column;
-            gap: 5px;
+            gap: 15px;
         }
         .split-col {
+            flex: 1;
             display: flex;
             align-items: center;
             gap: 10px;
         }
         .split-col span {
-            min-width: 90px;
+            white-space: nowrap;
         }
 
         /* Checkbox & Radio Styling */
         .radio-group, .checkbox-group {
             display: flex;
-            gap: 15px;
+            gap: 20px;
             align-items: center;
             flex-wrap: wrap;
         }
         .checkbox-group.grid {
             display: grid;
-            grid-template-columns: 1fr;
-            gap: 8px;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
         }
         .checkbox-item, .radio-item {
             display: flex;
@@ -192,47 +197,108 @@
         .checkbox-item input, .radio-item input {
             margin-right: 8px;
             cursor: pointer;
-            width: 14px;
-            height: 14px;
+            width: 16px;
+            height: 16px;
         }
 
         /* Footer / Signatures */
         .footer-note {
-            font-size: 11px;
+            font-size: 12px;
             font-style: italic;
             color: #d32f2f;
             background-color: #ffebee;
             padding: 10px 15px;
             border-left: 4px solid #d32f2f;
             border-radius: 4px;
-            margin-top: 20px;
+            margin-top: 25px;
         }
         .signatures {
             display: flex;
             justify-content: space-between;
-            margin-top: 30px;
-            padding: 0 10px;
+            margin-top: 40px;
+            padding: 0 50px;
         }
         .signature-box {
             text-align: center;
-            width: 200px;
+            width: 250px;
         }
         .signature-box p {
-            margin-bottom: 60px;
+            margin-bottom: 70px;
             font-weight: 600;
             color: #444;
-            font-size: 13px;
         }
         .signature-input {
             width: 100%;
             border: none;
             border-bottom: 1px solid #333;
             text-align: center;
-            font-size: 13px;
+            font-size: 14px;
             font-weight: bold;
             padding-bottom: 5px;
             background: transparent;
             outline: none;
+        }
+
+        /* RESPONSIVE DESIGN UNTUK SMARTPHONE / TABLET KECIL */
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+            .container {
+                padding: 15px;
+            }
+            .header {
+                flex-direction: column;
+                text-align: center;
+                gap: 10px;
+            }
+            .header .company {
+                text-align: center;
+            }
+            .doc-control {
+                justify-content: flex-start;
+            }
+            .doc-control table {
+                width: 100%;
+            }
+            .doc-input {
+                width: 100%;
+            }
+            /* Ubah tabel agar menjadi block / vertikal di layar kecil */
+            table.form-table, 
+            table.form-table tbody, 
+            table.form-table tr, 
+            table.form-table th, 
+            table.form-table td {
+                display: block;
+                width: 100%;
+            }
+            table.form-table th {
+                border-bottom: none;
+                padding-bottom: 5px;
+            }
+            table.form-table td {
+                border-top: none;
+                margin-bottom: 10px;
+                padding-top: 5px;
+            }
+            .split-row {
+                flex-direction: column;
+                gap: 10px;
+            }
+            .checkbox-group.grid {
+                grid-template-columns: 1fr;
+            }
+            .signatures {
+                flex-direction: column;
+                align-items: center;
+                gap: 30px;
+                padding: 0;
+            }
+            .signature-box {
+                width: 100%;
+                max-width: 250px;
+            }
         }
 
         /* Print Adjustments */
@@ -255,7 +321,19 @@
                 -webkit-print-color-adjust: exact;
                 print-color-adjust: exact;
                 border-radius: 0;
+                flex-direction: row; /* Pastikan kembali ke layout baris saat dicetak */
             }
+            table.form-table, 
+            table.form-table tbody, 
+            table.form-table tr, 
+            table.form-table th, 
+            table.form-table td {
+                display: table-cell; /* Kembalikan ke mode tabel saat print */
+            }
+            table.form-table tr { display: table-row; }
+            table.form-table tbody { display: table-row-group; }
+            table.form-table { display: table; }
+
             input[type="text"], input[type="date"], input[type="time"], input[type="number"], .doc-input {
                 border: none;
                 border-bottom: 1px dotted #777;
@@ -279,13 +357,10 @@
             .signature-input {
                 border-bottom: 1px solid #000;
             }
-
-            /* --- KODE TAMBAHAN UNTUK MENCEGAH TERPOTONG --- */
-            tr, .section-title, .footer-note, .signatures, .signature-box {
-                page-break-inside: avoid;
-                break-inside: avoid;
+            .signatures {
+                flex-direction: row;
+                padding: 0 50px;
             }
-            /* ------------------------------------------------ */
         }
     </style>
 </head>
@@ -295,7 +370,7 @@
 
 <div class="container">
     <div class="header">
-        <h1>Laporan Insiden/ Kecelakaan</h1>
+        <h1>Laporan Insiden/ Kecelakaan Kerja</h1>
         <div class="company">PT Miracle Multi Mandiri</div>
     </div>
 
@@ -320,7 +395,15 @@
                 </div>
             </td>
         </tr>
-        <tr><th>Umur</th><td><input type="number" placeholder="Contoh: 28" style="width: 100px;"> Tahun</td></tr>
+        <tr>
+            <th>Umur</th>
+            <td>
+                <div class="input-group">
+                    <input type="number" placeholder="Contoh: 28">
+                    <span>Tahun</span>
+                </div>
+            </td>
+        </tr>
         <tr><th>Nomor Induk / NIK</th><td><input type="text" placeholder="Masukkan nomor induk karyawan"></td></tr>
         <tr><th>Bagian / Departemen</th><td><input type="text" placeholder="Contoh: Produksi / Gudang"></td></tr>
         <tr><th>Jabatan</th><td><input type="text" placeholder="Masukkan jabatan saat ini"></td></tr>
@@ -331,27 +414,32 @@
     <table class="form-table">
         <tr>
             <th>Hari / Tanggal</th>
-            <td><input type="date" style="width: 150px;"></td>
+            <td><input type="date"></td>
         </tr>
         <tr>
             <th>Waktu (Pukul)</th>
-            <td><input type="time" style="width: 100px;"> WIB/WITA/WIT</td>
+            <td>
+                <div class="input-group">
+                    <input type="time">
+                    <span>WIB/WITA/WIT</span>
+                </div>
+            </td>
         </tr>
         <tr>
             <th>Nama Pelapor Insiden</th>
             <td>
                 <div class="split-row">
                     <div class="split-col"><span>Nama:</span> <input type="text"></div>
-                    <div class="split-col"><span>Jabatan/HP:</span> <input type="text"></div>
+                    <div class="split-col"><span>Jabatan/No.HP:</span> <input type="text"></div>
                 </div>
             </td>
         </tr>
         <tr>
-            <th>Saksi Langsung</th>
+            <th>Saksi Langsung Insiden</th>
             <td>
                 <div class="split-row">
                     <div class="split-col"><span>Nama:</span> <input type="text"></div>
-                    <div class="split-col"><span>Jabatan/HP:</span> <input type="text"></div>
+                    <div class="split-col"><span>Jabatan/No.HP:</span> <input type="text"></div>
                 </div>
             </td>
         </tr>
@@ -367,46 +455,46 @@
             </td>
         </tr>
         <tr>
-            <th>Pengobatan & Cedera</th>
+            <th>Pengobatan & Kondisi Cedera</th>
             <td>
-                <div class="checkbox-group" style="margin-bottom: 10px;">
+                <div class="checkbox-group" style="margin-bottom: 15px;">
                     <label class="checkbox-item"><input type="checkbox"> Tidak Ada</label>
                     <label class="checkbox-item"><input type="checkbox"> P3K Internal</label>
                     <label class="checkbox-item"><input type="checkbox"> Klinik Perusahaan</label>
-                    <label class="checkbox-item"><input type="checkbox"> Rumah Sakit</label>
+                    <label class="checkbox-item"><input type="checkbox"> Rumah Sakit / UGD</label>
                 </div>
-                <div style="margin-top: 10px;">
-                    <strong style="display:block; margin-bottom: 5px; color: #444;">Deskripsi Cedera:</strong>
+                <div style="margin-top: 15px;">
+                    <strong style="display:block; margin-bottom: 5px; color: #444;">Deskripsi Cedera (bagian tubuh yang cedera & kondisi):</strong>
                     <textarea placeholder="Jelaskan secara singkat bagian tubuh yang terluka..."></textarea>
                 </div>
-                <div style="margin-top: 10px;">
-                    <strong style="display:block; margin-bottom: 5px; color: #444;">Pertolongan Pertama:</strong>
+                <div style="margin-top: 15px;">
+                    <strong style="display:block; margin-bottom: 5px; color: #444;">Deskripsi pertolongan pertama yang telah diberikan:</strong>
                     <textarea placeholder="Jelaskan tindakan awal yang sudah dilakukan..."></textarea>
                 </div>
             </td>
         </tr>
     </table>
 
-    <div class="section-title">Analisis & Perbaikan</div>
+    <div class="section-title">Analisis & Perbaikan Insiden</div>
     <table class="form-table">
-        <tr><th>Kronologi Kejadian</th><td><textarea placeholder="Ceritakan bagaimana insiden ini bisa terjadi..."></textarea></td></tr>
+        <tr><th>Kronologi Kejadian</th><td><textarea placeholder="Ceritakan bagaimana insiden ini bisa terjadi secara berurutan..."></textarea></td></tr>
         <tr><th>Penyebab Insiden</th><td><textarea placeholder="Sebutkan faktor penyebab utama maupun pendukung..."></textarea></td></tr>
-        <tr><th>Akibat Insiden</th><td><textarea placeholder="Jelaskan kerugian yang timbul (cedera, alat rusak)..."></textarea></td></tr>
-        <tr><th>Langkah Perbaikan</th><td><textarea placeholder="Langkah apa yang diambil agar tidak terulang..."></textarea></td></tr>
+        <tr><th>Akibat Insiden</th><td><textarea placeholder="Jelaskan kerugian yang timbul (cedera, kerusakan alat, dll)..."></textarea></td></tr>
+        <tr><th>Langkah Perbaikan (Tindakan Korektif)</th><td><textarea placeholder="Langkah apa yang diambil agar kejadian serupa tidak terulang..."></textarea></td></tr>
     </table>
 
     <div class="footer-note">
-        <strong>PENTING:</strong> Supervisor wajib melaporkan secara tertulis kepada Dept. K3 (HSE) maksimal 1x24 jam sejak insiden.
+        <strong>PENTING:</strong> Supervisor atau atasan yang bersangkutan wajib melaporkan secara tertulis kepada Departemen K3 (HSE) dalam waktu maksimal 1x24 jam terhitung sejak terjadinya insiden/kecelakaan.
     </div>
 
     <div class="signatures">
         <div class="signature-box">
-            <p>Dilaporkan Oleh,<br></p>
+            <p>Dilaporkan Oleh,</p>
             <input type="text" class="signature-input" placeholder="(Nama Terang)">
         </div>
         <div class="signature-box">
-            <p>Mengetahui,<br></p>
-			<input type="text" class="signature-input" placeholder="(Nama & Jabatan)">
+            <p>Mengetahui,</p>
+            <input type="text" class="signature-input" placeholder="(Nama & Jabatan)">
         </div>
     </div>
 
